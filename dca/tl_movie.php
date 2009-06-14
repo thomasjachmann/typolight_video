@@ -326,17 +326,17 @@ class tl_movie extends Backend
 	{
 		$url = html_entity_decode($varValue);
 		
-		$source = $source_id = $thumbnail = null;
+		$source = $sourceId = $thumbnail = null;
 		
 		$match = array();
 		if (preg_match("/^(http:\/\/)?www\.youtube\.com\/.*[?&]v=([^&]*)&?/i", $url, $match)) {
 			$source = 'youtube';
-			$source_id = $match[2];
-			$thumbnail = "http://img.youtube.com/vi/" . $source_id . "/default.jpg";
+			$sourceId = $match[2];
+			$thumbnail = "http://img.youtube.com/vi/" . $sourceId . "/default.jpg";
 		} elseif (preg_match("/^(http:\/\/)?video\.google\.[^\/]+\/.*[?&]docid=([^&]*)&?/", $url, $match)) {
 			$source = 'google';
-			$source_id = $match[2];
-			$videofeed = $this->getUrl("http://video.google.com/videofeed?docid=" . $source_id);
+			$sourceId = $match[2];
+			$videofeed = $this->getUrl("http://video.google.com/videofeed?docid=" . $sourceId);
 			if (preg_match("/<media:thumbnail url=\"([^\"]*)\"/i", $videofeed, $match)) {
 				$thumbnail = html_entity_decode($match[1]);
 			}
@@ -344,15 +344,15 @@ class tl_movie extends Backend
 			$source = 'advotv';
 			$mediadetails = $this->getUrl($url);
 			if (preg_match("/mediaid=([^&]+)&/i", $mediadetails, $match)) {
-				$source_id = $match[1];
-				$thumbnail = "http://www.advotv.com/media/thumbs/screenshots/" . $source_id . ".jpg";
+				$sourceId = $match[1];
+				$thumbnail = "http://www.advotv.com/media/thumbs/screenshots/" . $sourceId . ".jpg";
 			}
 		}
-		if ($source == null || $source_id == null || $thumbnail == null) {
+		if ($source == null || $sourceId == null || $thumbnail == null) {
 			throw new Exception(sprintf($GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'], $varValue));
 		}
 		
-	  $this->Database->prepare("UPDATE tl_movie SET source=?, source_id = ?, thumbnail=? WHERE id=?")->execute($source, $source_id, $thumbnail, $dc->id);
+	  $this->Database->prepare("UPDATE tl_movie SET source=?, sourceId = ?, thumbnail=? WHERE id=?")->execute($source, $sourceId, $thumbnail, $dc->id);
 	
 	  return $varValue;
 	}

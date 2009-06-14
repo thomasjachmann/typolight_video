@@ -117,7 +117,7 @@ class ModuleMovieReader extends Module
 		$this->Template->name = $objMovie->name;
 		$this->Template->url = $objMovie->url;
 		$this->Template->source = $objMovie->source;
-		$this->Template->source_id = $objMovie->source_id;
+		$this->Template->sourceId = $objMovie->sourceId;
 		$this->Template->thumbnail = $objMovie->thumbnail;
 		$this->Template->description = $this->String->encodeEmail($objMovie->description);
 

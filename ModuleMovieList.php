@@ -87,7 +87,7 @@ class ModuleMovieList extends Module
 	 */
 	protected function compile()
 	{
-		$objMovie = $this->Database->execute("SELECT tl_movie.id AS id, pid, name, alias, url, source, source_id, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE pid IN(" . implode(',', $this->movie_categories) . ")" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY pid, sorting");
+		$objMovie = $this->Database->execute("SELECT tl_movie.id AS id, pid, name, alias, url, source, sourceId, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE pid IN(" . implode(',', $this->movie_categories) . ")" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY pid, sorting");
 
 		if ($objMovie->numRows < 1)
 		{
@@ -107,7 +107,7 @@ class ModuleMovieList extends Module
 				'href' => $this->generateMovieLink($objMovie),
 				'url' => $objMovie->url,
 				'source' => $objMovie->source,
-				'source_id' => $objMovie->source_id,
+				'sourceId' => $objMovie->sourceId,
 				'thumbnail' => $objMovie->thumbnail,
 				'description' => $objMovie->description
 			);

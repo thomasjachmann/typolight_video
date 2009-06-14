@@ -24,7 +24,7 @@ CREATE TABLE `tl_movie` (
   `author` int(10) unsigned NOT NULL default '0',
   `url` varchar(255) NOT NULL default '',
   `source` varchar(10) NOT NULL default '',
-  `source_id` varchar(255) NOT NULL default '',
+  `sourceId` varchar(255) NOT NULL default '',
   `thumbnail` varchar(255) NOT NULL default '',
   `description` text NULL,
   `published` char(1) NOT NULL default '',
