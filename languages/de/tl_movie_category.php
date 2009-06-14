@@ -30,22 +30,31 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_movie_category'][''] = array('', '');
+$GLOBALS['TL_LANG']['tl_movie_category']['title']    = array('Titel', 'Bitte geben Sie den Kategorie-Titel ein.');
+$GLOBALS['TL_LANG']['tl_movie_category']['headline'] = array('Überschrift', 'Bitte geben Sie die Kategorie-Überschrift ein.');
+$GLOBALS['TL_LANG']['tl_movie_category']['jumpTo']   = array('Weiterleitungsseite', 'Bitte wählen Sie die Film-Leser-Seite aus, zu der Besucher weitergeleitet werden wenn Sie einen Film anklicken.');
+$GLOBALS['TL_LANG']['tl_movie_category']['tstamp']   = array('Änderungsdatum', 'Datum und Uhrzeit der letzten Änderung');
+
+
+/**
+ * Legends
+ */
+$GLOBALS['TL_LANG']['tl_movie_category']['title_legend'] = 'Titel und Weiterleitung';
 
 
 /**
  * Reference
  */
-$GLOBALS['TL_LANG']['tl_movie_category'][''] = '';
+$GLOBALS['TL_LANG']['tl_movie_category']['deleteConfirm'] = 'Wenn Sie die Kategorie %s löschen, werde auch alle darin enthaltenen Filme gelöscht! Fortfahren?';
 
 
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_movie_category']['new']    = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['edit']   = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['copy']   = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['delete'] = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['show']   = array('', '');
+$GLOBALS['TL_LANG']['tl_movie_category']['new']    = array('Neue Kategorie', 'Eine neue Kategorie anlegen');
+$GLOBALS['TL_LANG']['tl_movie_category']['show']   = array('Kategoriedetails', 'Details der Kategorie ID %s anzeigen');
+$GLOBALS['TL_LANG']['tl_movie_category']['edit']   = array('Kategorie bearbeiten', 'Kategorie ID %s bearbeiten');
+$GLOBALS['TL_LANG']['tl_movie_category']['copy']   = array('Kategorie duplizieren', 'Kategorie ID %s duplizieren');
+$GLOBALS['TL_LANG']['tl_movie_category']['delete'] = array('Kategorie löschen', 'Kategorie ID %s löschen');
 
 ?>

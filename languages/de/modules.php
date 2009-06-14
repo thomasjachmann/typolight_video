@@ -30,12 +30,14 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
+$GLOBALS['TL_LANG']['MOD']['movie'] = array('Filme', 'Externe Filme verwalten und auf Seiten einbetten.');
 
 
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+$GLOBALS['TL_LANG']['FMD']['movie']       = 'Filme';
+$GLOBALS['TL_LANG']['FMD']['movielist']   = array('Film-Liste', 'fügt der Seite eine Liste von Filmen hinzu.');
+$GLOBALS['TL_LANG']['FMD']['moviereader'] = array('Film-Leser', 'stellt einen Film dar.');
 
 ?>

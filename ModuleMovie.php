@@ -34,22 +34,99 @@
  * @author     Thomas Jachmann <tom.j@gmx.net> 
  * @package    Controller
  */
-class ModuleMovie extends Module
+class ModuleMovie extends Frontend
 {
 
 	/**
 	 * Template
 	 * @var string
 	 */
-	protected $strTemplate = '';
+	/*protected $strTemplate = '';*/
 
 
 	/**
 	 * Generate module
 	 */
-	protected function compile()
+	/*protected function compile()
 	{
 		
+	}*/
+
+
+	/**
+	 * Add Movies to the indexer
+	 * @param array
+	 * @param integer
+	 * @return array
+	 */
+	public function getSearchablePages($arrPages, $intRoot=0)
+	{
+		$arrRoot = array();
+
+		if ($intRoot > 0)
+		{
+			$arrRoot = $this->getChildRecords($intRoot, 'tl_page', true);
+		}
+
+		$time = time();
+		$arrProcessed = array();
+
+		// Get all categories
+		$objFaq = $this->Database->execute("SELECT id, jumpTo FROM tl_movie_category");
+
+		// Walk through each category
+		while ($objFaq->next())
+		{
+			if (is_array($arrRoot) && count($arrRoot) > 0 && !in_array($objFaq->jumpTo, $arrRoot))
+			{
+				continue;
+			}
+
+			// Get the URL of the jumpTo page
+			if (!isset($arrProcessed[$objFaq->jumpTo]))
+			{
+				$arrProcessed[$objFaq->jumpTo] = false;
+
+				// Get target page
+				$objParent = $this->Database->prepare("SELECT id, alias FROM tl_page WHERE id=? AND (start='' OR start<?) AND (stop='' OR stop>?) AND published=1")
+											->limit(1)
+											->execute($objFaq->jumpTo, $time, $time);
+
+				// Determin domain
+				if ($objParent->numRows)
+				{
+					$domain = $this->Environment->base;
+					$objParent = $this->getPageDetails($objParent->id);
+
+					if (strlen($objParent->domain))
+					{
+						$domain = ($this->Environment->ssl ? 'https://' : 'http://') . $objParent->domain . TL_PATH . '/';
+					}
+
+					$arrProcessed[$objFaq->jumpTo] = $domain . $this->generateFrontendUrl($objParent->row(), '/items/%s');
+				}
+			}
+
+			// Skip FAQs without target page
+			if ($arrProcessed[$objFaq->jumpTo] === false)
+			{
+				continue;
+			}
+
+			$strUrl = $arrProcessed[$objFaq->jumpTo];
+
+			// Get items
+			$objItem = $this->Database->prepare("SELECT * FROM tl_movie WHERE pid=? AND published=1 ORDER BY sorting")
+									  ->execute($objFaq->id);
+
+			// Add items to the indexer
+			while ($objItem->next())
+			{
+				$arrPages[] = sprintf($strUrl, ((strlen($objItem->alias) && !$GLOBALS['TL_CONFIG']['disableAlias']) ? $objItem->alias : $objItem->id));
+			}
+		}
+
+		return $arrPages;
 	}
 }
 

@@ -37,6 +37,8 @@ $GLOBALS['TL_DCA']['tl_movie_category'] = array
 	'config' => array
 	(
 		'dataContainer'               => 'Table',
+		'ctable'                      => array('tl_movie'),
+		'switchToEdit'                => true,
 		'enableVersioning'            => true
 	),
 
@@ -46,12 +48,13 @@ $GLOBALS['TL_DCA']['tl_movie_category'] = array
 		'sorting' => array
 		(
 			'mode'                    => 1,
-			'fields'                  => array(''),
-			'flag'                    => 1
+			'fields'                  => array('title'),
+			'flag'                    => 1,
+			'panelLayout'             => 'search,limit'
 		),
 		'label' => array
 		(
-			'fields'                  => array(''),
+			'fields'                  => array('title'),
 			'format'                  => '%s'
 		),
 		'global_operations' => array
@@ -69,7 +72,7 @@ $GLOBALS['TL_DCA']['tl_movie_category'] = array
 			'edit' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['tl_movie_category']['edit'],
-				'href'                => 'act=edit',
+				'href'                => 'table=tl_movie',
 				'icon'                => 'edit.gif'
 			),
 			'copy' => array
@@ -97,26 +100,35 @@ $GLOBALS['TL_DCA']['tl_movie_category'] = array
 	// Palettes
 	'palettes' => array
 	(
-		'__selector__'                => array(''),
-		'default'                     => ''
-	),
-
-	// Subpalettes
-	'subpalettes' => array
-	(
-		''                            => ''
+		'default'                     => '{title_legend},title,headline,jumpTo'
 	),
 
 	// Fields
 	'fields' => array
 	(
-		'' => array
+		'title' => array
 		(
-			'label'                   => &$GLOBALS['TL_LANG']['tl_movie_category'][''],
+			'label'                   => &$GLOBALS['TL_LANG']['tl_movie_category']['title'],
 			'exclude'                 => true,
+			'search'                  => true,
 			'inputType'               => 'text',
-			'eval'                    => array('mandatory'=>true, 'maxlength'=>255)
-		)
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50')
+		)	,
+		'headline' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_movie_category']['headline'],
+			'exclude'                 => true,
+			'search'                  => true,
+			'inputType'               => 'text',
+			'eval'                    => array('mandatory'=>true, 'maxlength'=>255, 'tl_class'=>'w50')
+		),
+		'jumpTo' => array
+		(
+			'label'                   => &$GLOBALS['TL_LANG']['tl_movie_category']['jumpTo'],
+			'exclude'                 => true,
+			'inputType'               => 'pageTree',
+			'eval'                    => array('fieldType'=>'radio', 'tl_class'=>'clr')
+		),
 	)
 );
 

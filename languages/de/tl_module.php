@@ -30,22 +30,6 @@
 /**
  * Fields
  */
-//$GLOBALS['TL_LANG']['tl_movie'][''] = array('', '');
-
-
-/**
- * Reference
- */
-//$GLOBALS['TL_LANG']['tl_movie'][''] = '';
-
-
-/**
- * Buttons
- */
-//$GLOBALS['TL_LANG']['tl_movie']['new']    = array('', '');
-//$GLOBALS['TL_LANG']['tl_movie']['edit']   = array('', '');
-//$GLOBALS['TL_LANG']['tl_movie']['copy']   = array('', '');
-//$GLOBALS['TL_LANG']['tl_movie']['delete'] = array('', '');
-//$GLOBALS['TL_LANG']['tl_movie']['show']   = array('', '');
+$GLOBALS['TL_LANG']['tl_module']['movie_categories'] = array('Film-Kategorien', 'Bitte wählen Sie eine oder mehrere Film-Kategorien.');
 
 ?>

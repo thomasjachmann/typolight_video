@@ -30,6 +30,11 @@
 /**
  * Miscellaneous
  */
-$GLOBALS['TL_LANG']['MSC'][''] = '';
+$GLOBALS['TL_LANG']['MSC']['movieCreatedBy'] = 'Zuletzt aktualisiert am %s von %s.';
+
+/**
+ * Errors
+ */
+$GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'] = 'Die URL "%s" stammt von keiner bekannten Video-Quelle.';
 
 ?>

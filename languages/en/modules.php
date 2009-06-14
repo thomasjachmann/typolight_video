@@ -30,12 +30,12 @@
 /**
  * Back end modules
  */
-$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
+//$GLOBALS['TL_LANG']['MOD'][''] = array('', '');
 
 
 /**
  * Front end modules
  */
-$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
+//$GLOBALS['TL_LANG']['FMD'][''] = array('', '');
 
 ?>

@@ -54,6 +54,14 @@
  * 
  * Use function array_insert() to modify an existing modules array.
  */
+array_insert($GLOBALS['BE_MOD']['content'], 2, array
+(
+	'movie' => array
+	(
+		'tables' => array('tl_movie_category', 'tl_movie'),
+		'icon'   => 'system/modules/movie/html/icon.gif'
+	)
+));
 
 
 /**
@@ -74,7 +82,15 @@
  * 
  * Use function array_insert() to modify an existing CTE array.
  */
- 
+array_insert($GLOBALS['FE_MOD'], 3, array
+(
+	'movie' => array
+	(
+		'movielist'   => 'ModuleMovieList',
+		'moviereader' => 'ModuleMovieReader'
+	)
+));
+
 
 /**
  * -------------------------------------------------------------------------
@@ -94,7 +110,7 @@
  * 
  * Use function array_insert() to modify an existing CTE array.
  */
- 
+# TODO Content Element zum direkten Einfügen in einen Artikel
 
 /**
  * -------------------------------------------------------------------------
@@ -169,6 +185,7 @@
  * 
  * Use function array_insert() to modify an existing hooks array.
  */
+$GLOBALS['TL_HOOKS']['getSearchablePages'][] = array('ModuleMovie', 'getSearchablePages');
 
 
 /**

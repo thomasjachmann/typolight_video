@@ -30,22 +30,22 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_movie_category'][''] = array('', '');
+//$GLOBALS['TL_LANG']['tl_movie_category'][''] = array('', '');
 
 
 /**
  * Reference
  */
-$GLOBALS['TL_LANG']['tl_movie_category'][''] = '';
+//$GLOBALS['TL_LANG']['tl_movie_category'][''] = '';
 
 
 /**
  * Buttons
  */
-$GLOBALS['TL_LANG']['tl_movie_category']['new']    = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['edit']   = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['copy']   = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['delete'] = array('', '');
-$GLOBALS['TL_LANG']['tl_movie_category']['show']   = array('', '');
+//$GLOBALS['TL_LANG']['tl_movie_category']['new']    = array('', '');
+//$GLOBALS['TL_LANG']['tl_movie_category']['edit']   = array('', '');
+//$GLOBALS['TL_LANG']['tl_movie_category']['copy']   = array('', '');
+//$GLOBALS['TL_LANG']['tl_movie_category']['delete'] = array('', '');
+//$GLOBALS['TL_LANG']['tl_movie_category']['show']   = array('', '');
 
 ?>
