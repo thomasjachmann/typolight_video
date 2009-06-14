@@ -87,7 +87,7 @@ class ModuleMovieList extends Module
 	 */
 	protected function compile()
 	{
-		$objMovie = $this->Database->execute("SELECT tl_movie.id AS id, pid, name, alias, url, source, sourceId, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE pid IN(" . implode(',', $this->movie_categories) . ")" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY pid, sorting");
+		$objMovie = $this->Database->execute("SELECT tl_movie.id AS id, pid, name, alias, url, source, sourceId, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE pid IN(" . implode(',', $this->movie_categories) . ")" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY " . ($this->movie_random ? 'rand()' : 'pid, sorting') . ($this->movie_maxMovies > 0 ? ' LIMIT ' . $this->movie_maxMovies : ''));
 
 		if ($objMovie->numRows < 1)
 		{
@@ -95,12 +95,12 @@ class ModuleMovieList extends Module
 			return;
 		}
 
-		$arrMovie = array_fill_keys($this->movie_categories, array());
+		$arrMovie = array_fill_keys($this->movie_random > 0 ? array(0) : $this->movie_categories, array());
 
 		// Add Movies
 		while ($objMovie->next())
 		{
-			$arrMovie[$objMovie->pid]['items'][] = array
+			$movie = array
 			(
 				'name' => $objMovie->name,
 				'title' => htmlspecialchars($objMovie->name),
@@ -111,8 +111,13 @@ class ModuleMovieList extends Module
 				'thumbnail' => $objMovie->thumbnail,
 				'description' => $objMovie->description
 			);
-
-			$arrMovie[$objMovie->pid]['headline'] = $objMovie->headline;
+			
+			if ($this->movie_random > 0) {
+				$arrMovie[0]['items'][] = $movie;
+			} else {
+				$arrMovie[$objMovie->pid]['items'][] = $movie;
+				$arrMovie[$objMovie->pid]['headline'] = $objMovie->headline;
+			}
 		}
 
 		$arrMovie = array_values($arrMovie);

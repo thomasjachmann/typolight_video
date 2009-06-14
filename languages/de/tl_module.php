@@ -31,5 +31,7 @@
  * Fields
  */
 $GLOBALS['TL_LANG']['tl_module']['movie_categories'] = array('Film-Kategorien', 'Bitte wählen Sie eine oder mehrere Film-Kategorien.');
+$GLOBALS['TL_LANG']['tl_module']['movie_maxMovies'] = array('Maximalzahl', 'Wenn Sie maximal eine bestimmte Anzahl an Filmen auflisten wollen, tragen Sie hier eine Zahl größer 0 ein.');
+$GLOBALS['TL_LANG']['tl_module']['movie_random'] = array('Zufällig sortiert', 'Sollen die Filme zufällig sortiert werden? Die Gruppierung nach Kategorien wird hierdurch aufgehoben.');
 
 ?>
