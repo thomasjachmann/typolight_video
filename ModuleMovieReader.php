@@ -69,14 +69,6 @@ class ModuleMovieReader extends Module
 			return '';
 		}
 
-		$this->movie_categories = deserialize($this->movie_categories, true);
-
-		// Return if there are no categories
-		if (!is_array($this->movie_categories) || count($this->movie_categories) < 1)
-		{
-			return '';
-		}
-
 		return parent::generate();
 	}
 
@@ -91,7 +83,7 @@ class ModuleMovieReader extends Module
 		$this->Template->back = $GLOBALS['TL_LANG']['MSC']['goBack'];
 		$this->Template->referer = 'javascript:history.go(-1)';
 
-		$objMovie = $this->Database->prepare("SELECT *, (SELECT title FROM tl_movie_category WHERE tl_movie_category.id=tl_movie.pid) AS category, (SELECT name FROM tl_user WHERE tl_user.id=tl_movie.author) AS authorsName FROM tl_movie WHERE pid IN(" . implode(',', $this->movie_categories) . ") AND (id=? OR alias=?)" . (!BE_USER_LOGGED_IN ? " AND published=1" : ""))
+		$objMovie = $this->Database->prepare("SELECT *, (SELECT title FROM tl_movie_category WHERE tl_movie_category.id=tl_movie.pid) AS category, (SELECT name FROM tl_user WHERE tl_user.id=tl_movie.author) AS authorsName FROM tl_movie WHERE (id=? OR alias=?)" . (!BE_USER_LOGGED_IN ? " AND published=1" : ""))
 								 ->limit(1)
 								 ->execute((is_numeric($this->Input->get('items')) ? $this->Input->get('items') : 0), $this->Input->get('items'));
 

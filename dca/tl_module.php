@@ -32,7 +32,7 @@
  */
 # TODO Formular-Felder bereinigen
 $GLOBALS['TL_DCA']['tl_module']['palettes']['movielist']   = '{title_legend},name,headline,type;{config_legend},movie_categories,movie_maxMovies,movie_random;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
-$GLOBALS['TL_DCA']['tl_module']['palettes']['moviereader'] = '{title_legend},name,headline,type;{config_legend},movie_categories;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['moviereader'] = '{title_legend},name,headline,type;{config_legend};{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 
 /**
