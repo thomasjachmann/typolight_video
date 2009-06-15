@@ -31,7 +31,7 @@
  * Add palettes to tl_module
  */
 # TODO Formular-Felder bereinigen
-$GLOBALS['TL_DCA']['tl_module']['palettes']['movielist']   = '{title_legend},name,headline,type;{config_legend},movie_categories,movie_maxMovies,movie_random;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
+$GLOBALS['TL_DCA']['tl_module']['palettes']['movielist']   = '{title_legend},name,headline,type;{config_legend},movie_categories,movie_movies,movie_maxMovies,movie_random;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['moviereader'] = '{title_legend},name,headline,type;{config_legend};{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 
 
@@ -44,7 +44,15 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['movie_categories'] = array
 	'exclude'                 => true,
 	'inputType'               => 'checkboxWizard',
 	'foreignKey'              => 'tl_movie_category.title',
-	'eval'                    => array('multiple'=>true, 'mandatory'=>true)
+	'eval'                    => array('multiple'=>true)
+);
+$GLOBALS['TL_DCA']['tl_module']['fields']['movie_movies'] = array
+(
+	'label'                   => &$GLOBALS['TL_LANG']['tl_module']['movie_movies'],
+	'exclude'                 => true,
+	'inputType'               => 'checkboxWizard',
+	'foreignKey'              => 'tl_movie.name',
+	'eval'                    => array('multiple'=>true)
 );
 $GLOBALS['TL_DCA']['tl_module']['fields']['movie_maxMovies'] = array
 (

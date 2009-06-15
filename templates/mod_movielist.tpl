@@ -5,7 +5,7 @@
 
 <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
 <?php endif; ?>
-<?php foreach($this->movie as $category): ?>
+<?php foreach($this->categories as $category): ?>
 
 <?php if (strlen($category['headline'])): ?><h2><?php echo $category['headline']; ?></h2><?php endif; ?>
 

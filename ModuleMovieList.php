@@ -71,12 +71,7 @@ class ModuleMovieList extends Module
 		}
 
 		$this->movie_categories = deserialize($this->movie_categories, true);
-
-		// Return if there are no categories
-		if (!is_array($this->movie_categories) || count($this->movie_categories) < 1)
-		{
-			return '';
-		}
+		$this->movie_movies = deserialize($this->movie_movies, true);
 
 		return parent::generate();
 	}
@@ -87,7 +82,30 @@ class ModuleMovieList extends Module
 	 */
 	protected function compile()
 	{
-		$objMovie = $this->Database->execute("SELECT tl_movie.id AS id, pid, name, alias, url, source, sourceId, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE pid IN(" . implode(',', $this->movie_categories) . ")" . (!BE_USER_LOGGED_IN ? " AND published=1" : "") . " ORDER BY " . ($this->movie_random ? 'rand()' : 'pid, sorting') . ($this->movie_maxMovies > 0 ? ' LIMIT ' . $this->movie_maxMovies : ''));
+		$categorize = ($this->movie_random == 0);
+		
+		$sql = "SELECT tl_movie.id AS id, pid, name, alias, url, source, sourceId, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE ";
+		if (is_array($this->movie_movies) && count($this->movie_movies) > 0 && $this->movie_movies[0]) {
+			$sql .= "tl_movie.id IN(" . implode(',', $this->movie_movies) . ") ";
+			$categorize = false;
+		} elseif (is_array($this->movie_categories) && count($this->movie_categories) > 0 && $this->movie_categories[0]) {
+			$sql .= "pid IN(" . implode(',', $this->movie_categories) . ") ";
+		} else {
+			$sql .= "1=1 ";
+		}
+		if (!BE_USER_LOGGED_IN) {
+			$sql .= "AND published=1 ";
+		}
+		$sql .= "ORDER BY ";
+		if ($this->movie_random) {
+			$sql .= "rand() ";
+		} else {
+			$sql .= "pid, sorting ";
+		}
+		if ($this->movie_maxMovies > 0) {
+			$sql .= "LIMIT " . $this->movie_maxMovies;
+		}
+		$objMovie = $this->Database->execute($sql);
 
 		if ($objMovie->numRows < 1)
 		{
@@ -95,12 +113,12 @@ class ModuleMovieList extends Module
 			return;
 		}
 
-		$arrMovie = array_fill_keys($this->movie_random > 0 ? array(0) : $this->movie_categories, array());
+		$arrCategories = array_fill_keys($categorize ? array(0) : $this->movie_categories, array());
 
 		// Add Movies
 		while ($objMovie->next())
 		{
-			$movie = array
+			$arrMovie = array
 			(
 				'name' => $objMovie->name,
 				'title' => htmlspecialchars($objMovie->name),
@@ -112,34 +130,34 @@ class ModuleMovieList extends Module
 				'description' => $objMovie->description
 			);
 			
-			if ($this->movie_random > 0) {
-				$arrMovie[0]['items'][] = $movie;
+			if ($categorize) {
+				$arrCategories[$objMovie->pid]['items'][] = $arrMovie;
+				$arrCategories[$objMovie->pid]['headline'] = $objMovie->headline;
 			} else {
-				$arrMovie[$objMovie->pid]['items'][] = $movie;
-				$arrMovie[$objMovie->pid]['headline'] = $objMovie->headline;
+				$arrCategories[0]['items'][] = $arrMovie;
 			}
 		}
 
-		$arrMovie = array_values($arrMovie);
+		$arrCategories = array_values($arrCategories);
 
 		$cat_count = 0;
-		$cat_limit = count($arrMovie);
+		$cat_limit = count($arrCategories);
 
 		// Add classes
-		foreach ($arrMovie as $k=>$v)
+		foreach ($arrCategories as $k=>$v)
 		{
 			$count = 0;
 			$limit = count($v['items']);
 
 			for ($i=0; $i<$limit; $i++)
 			{
-				$arrMovie[$k]['items'][$i]['class'] = trim(((++$count == 1) ? ' first' : '') . (($count >= $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
+				$arrCategories[$k]['items'][$i]['class'] = trim(((++$count == 1) ? ' first' : '') . (($count >= $limit) ? ' last' : '') . ((($count % 2) == 0) ? ' odd' : ' even'));
 			}
 
-			$arrMovie[$k]['class'] = trim(((++$cat_count == 1) ? ' first' : '') . (($cat_count >= $cat_limit) ? ' last' : '') . ((($cat_count % 2) == 0) ? ' odd' : ' even'));
+			$arrCategories[$k]['class'] = trim(((++$cat_count == 1) ? ' first' : '') . (($cat_count >= $cat_limit) ? ' last' : '') . ((($cat_count % 2) == 0) ? ' odd' : ' even'));
 		}
 
-		$this->Template->movie = $arrMovie;
+		$this->Template->categories = $arrCategories;
 	}
 
 

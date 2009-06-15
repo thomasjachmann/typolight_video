@@ -57,6 +57,7 @@ CREATE TABLE `tl_movie_category` (
 
 CREATE TABLE `tl_module` (
   `movie_categories` blob NULL,
+  `movie_movies` blob NULL,
   `movie_random` char(1) NOT NULL default '',
   `movie_maxMovies` smallint(5) unsigned NULL default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
