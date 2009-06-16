@@ -28,12 +28,6 @@
 
 
 /**
- * Miscellaneous
- */
-$GLOBALS['TL_LANG']['MSC']['movieCreatedBy'] = 'Zuletzt aktualisiert am %s von %s.';
-
-
-/**
  * Content Elements
  */
 $GLOBALS['TL_LANG']['CTE']['movies']   = array('Film-Elemente', '');

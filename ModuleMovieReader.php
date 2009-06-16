@@ -112,8 +112,6 @@ class ModuleMovieReader extends Module
 		$this->Template->sourceId = $objMovie->sourceId;
 		$this->Template->thumbnail = $objMovie->thumbnail;
 		$this->Template->description = $this->String->encodeEmail($objMovie->description);
-
-		$this->Template->info = sprintf($GLOBALS['TL_LANG']['MSC']['movieCreatedBy'], $this->parseDate($GLOBALS['TL_CONFIG']['dateFormat'], $objMovie->tstamp), $objMovie->authorsName);
 	}
 }
 
