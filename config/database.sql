@@ -61,3 +61,15 @@ CREATE TABLE `tl_module` (
   `movie_random` char(1) NOT NULL default '',
   `movie_maxMovies` smallint(5) unsigned NULL default '0'
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+
+-- --------------------------------------------------------
+
+-- 
+-- Table `tl_content`
+-- 
+
+CREATE TABLE `tl_content` (
+  `movie_alias` int(10) unsigned NOT NULL default '0',
+  `movie_showDescription` char(1) NOT NULL default ''
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;

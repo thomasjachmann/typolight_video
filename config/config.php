@@ -110,7 +110,13 @@ array_insert($GLOBALS['FE_MOD'], 3, array
  * 
  * Use function array_insert() to modify an existing CTE array.
  */
-# TODO Content Element zum direkten Einfügen in einen Artikel
+array_insert($GLOBALS['TL_CTE'], 3, array
+(
+	'movies' => array
+	(
+		'movieReader' => 'ContentMovieReader'
+	)
+));
 
 /**
  * -------------------------------------------------------------------------
