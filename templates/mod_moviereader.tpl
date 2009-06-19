@@ -22,6 +22,8 @@
   (<a href="<?php echo $this->url; ?>"><?php echo $GLOBALS['TL_LANG']['MSC']['movieSource']; ?></a>)
 </div>
 
+</div>
+
 <?php if ($this->description): ?>
 <div class="moviereader_description ce_text block">
   <?php echo $this->description; ?>
@@ -32,5 +34,4 @@
 
 <!--p class="back"><a href="<?php echo $this->referer; ?>" title="<?php echo $this->back; ?>"><?php echo $this->back; ?></a></p-->
 
-</div>
 </div>

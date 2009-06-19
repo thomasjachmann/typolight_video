@@ -10,11 +10,12 @@
   (<a href="<?php echo $this->url; ?>"><?php echo $GLOBALS['TL_LANG']['MSC']['movieSource']; ?></a>)
 </div>
 
+</div>
+
 <?php if ($this->showDescription && $this->description): ?>
 <div class="moviereader_description ce_text block">
   <?php echo $this->description; ?>
 </div>
 <?php endif; ?>
 
-</div>
 <?php endif; ?>
