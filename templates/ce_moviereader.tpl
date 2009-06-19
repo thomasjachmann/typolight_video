@@ -7,6 +7,7 @@
 
 <div class="moviereader_name">
   <?php echo $this->name; ?>
+  (<a href="<?php echo $this->url; ?>"><?php echo $GLOBALS['TL_LANG']['MSC']['movieSource']; ?></a>)
 </div>
 
 <?php if ($this->showDescription && $this->description): ?>

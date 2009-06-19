@@ -26,6 +26,7 @@
  * @filesource
  */
 
+$GLOBALS['TL_LANG']['MSC']['movieSource'] = 'Quelle';
 
 /**
  * Content Elements

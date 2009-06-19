@@ -1,5 +1,5 @@
 
-<div class="moviereader <?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
 <?php if ($this->headline): ?>
 
 <<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
@@ -11,8 +11,15 @@
 
 <h1><?php echo $this->name; ?></h1>
 
+<div class="moviereader">
+
 <div class="moviereader_playback">
   <?php include('mod_moviereader_' . $this->source . '.tpl'); ?>
+</div>
+
+<div class="moviereader_name">
+  <?php echo $this->name; ?>
+  (<a href="<?php echo $this->url; ?>"><?php echo $GLOBALS['TL_LANG']['MSC']['movieSource']; ?></a>)
 </div>
 
 <?php if ($this->description): ?>
@@ -23,6 +30,7 @@
 
 <?php endif; ?>
 
-<p class="back"><a href="<?php echo $this->referer; ?>" title="<?php echo $this->back; ?>"><?php echo $this->back; ?></a></p>
+<!--p class="back"><a href="<?php echo $this->referer; ?>" title="<?php echo $this->back; ?>"><?php echo $this->back; ?></a></p-->
 
+</div>
 </div>
