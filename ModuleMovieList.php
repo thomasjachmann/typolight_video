@@ -113,7 +113,7 @@ class ModuleMovieList extends Module
 			return;
 		}
 
-		$arrCategories = array_fill_keys($categorize ? array(0) : $this->movie_categories, array());
+		$arrCategories = array_fill_keys($categorize ? $this->movie_categories : array(0), array());
 
 		// Add Movies
 		while ($objMovie->next())
