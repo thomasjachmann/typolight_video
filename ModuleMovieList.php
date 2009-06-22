@@ -83,11 +83,13 @@ class ModuleMovieList extends Module
 	protected function compile()
 	{
 		$categorize = ($this->movie_random == 0);
+		$sort_items = false;
 		
 		$sql = "SELECT tl_movie.id AS id, pid, name, alias, url, source, sourceId, thumbnail, description, headline, jumpTo FROM tl_movie LEFT JOIN tl_movie_category ON(tl_movie_category.id=tl_movie.pid) WHERE ";
 		if (is_array($this->movie_movies) && count($this->movie_movies) > 0 && $this->movie_movies[0]) {
 			$sql .= "tl_movie.id IN(" . implode(',', $this->movie_movies) . ") ";
 			$categorize = false;
+			$sort_items = true;
 		} elseif (is_array($this->movie_categories) && count($this->movie_categories) > 0 && $this->movie_categories[0]) {
 			$sql .= "pid IN(" . implode(',', $this->movie_categories) . ") ";
 		} else {
@@ -99,6 +101,8 @@ class ModuleMovieList extends Module
 		$sql .= "ORDER BY ";
 		if ($this->movie_random) {
 			$sql .= "rand() ";
+		} elseif ($sort_items) {
+			$sql .= "field(tl_movie.id, " . implode(',', $this->movie_movies) . ") ";
 		} else {
 			$sql .= "pid, sorting ";
 		}
@@ -137,7 +141,7 @@ class ModuleMovieList extends Module
 				$arrCategories[0]['items'][] = $arrMovie;
 			}
 		}
-
+		
 		$arrCategories = array_values($arrCategories);
 
 		$cat_count = 0;
