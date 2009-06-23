@@ -20,7 +20,7 @@ CREATE TABLE `tl_movie` (
   `sorting` int(10) unsigned NOT NULL default '0',
   `tstamp` int(10) unsigned NOT NULL default '0',
   `name` varchar(255) NOT NULL default '',
-  `alias` varchar(128) NOT NULL default '',
+  `alias` varbinary(128) NOT NULL default '',
   `author` int(10) unsigned NOT NULL default '0',
   `url` varchar(255) NOT NULL default '',
   `source` varchar(10) NOT NULL default '',

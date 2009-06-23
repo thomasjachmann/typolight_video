@@ -32,7 +32,7 @@
  */
 $GLOBALS['TL_LANG']['tl_movie_category']['title']    = array('Titel', 'Bitte geben Sie den Kategorie-Titel ein.');
 $GLOBALS['TL_LANG']['tl_movie_category']['headline'] = array('Überschrift', 'Bitte geben Sie die Kategorie-Überschrift ein.');
-$GLOBALS['TL_LANG']['tl_movie_category']['jumpTo']   = array('Weiterleitungsseite', 'Bitte wählen Sie die Film-Leser-Seite aus, zu der Besucher weitergeleitet werden wenn Sie einen Film anklicken.');
+$GLOBALS['TL_LANG']['tl_movie_category']['jumpTo']   = array('Weiterleitungsseite', 'Bitte wählen Sie die Film-Leser-Seite aus, zu der Besucher weitergeleitet werden, wenn Sie einen Film anklicken.');
 $GLOBALS['TL_LANG']['tl_movie_category']['tstamp']   = array('Änderungsdatum', 'Datum und Uhrzeit der letzten Änderung');
 
 
