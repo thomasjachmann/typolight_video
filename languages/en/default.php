@@ -26,18 +26,18 @@
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['MSC']['movieSource'] = 'Quelle';
+$GLOBALS['TL_LANG']['MSC']['movieSource'] = 'Source';
 
 /**
  * Content Elements
  */
-$GLOBALS['TL_LANG']['CTE']['movies']   = array('Film-Elemente', '');
-$GLOBALS['TL_LANG']['CTE']['movieReader']   = array('Film', 'fügt einen Film ein.');
+$GLOBALS['TL_LANG']['CTE']['movies']   = array('Movie elements', '');
+$GLOBALS['TL_LANG']['CTE']['movieReader']   = array('Movie', 'includes a movie.');
 
 
 /**
  * Errors
  */
-$GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'] = 'Die URL "%s" stammt von keiner bekannten Video-Quelle (www.youtube.com, video.google.com, www.advotv.com).';
+$GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'] = 'The URL "%s" doesn\' point to a known video source (www.youtube.com, video.google.com, www.advotv.com).';
 
 ?>

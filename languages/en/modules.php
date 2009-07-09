@@ -21,23 +21,23 @@
  * PHP version 5
  * @copyright  Thomas Jachmann 2009 
  * @author     Thomas Jachmann <tom.j@gmx.net> 
- * @package    Language
+ * @package    Movies 
  * @license    LGPL 
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['MSC']['movieSource'] = 'Quelle';
 
 /**
- * Content Elements
+ * Back end modules
  */
-$GLOBALS['TL_LANG']['CTE']['movies']   = array('Film-Elemente', '');
-$GLOBALS['TL_LANG']['CTE']['movieReader']   = array('Film', 'fügt einen Film ein.');
+$GLOBALS['TL_LANG']['MOD']['movie'] = array('Movies', 'Manage external movies and embed them into pages.');
 
 
 /**
- * Errors
+ * Front end modules
  */
-$GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'] = 'Die URL "%s" stammt von keiner bekannten Video-Quelle (www.youtube.com, video.google.com, www.advotv.com).';
+$GLOBALS['TL_LANG']['FMD']['movie']       = 'Movies';
+$GLOBALS['TL_LANG']['FMD']['movielist']   = array('Movie list', 'adds a list of movies to the page.');
+$GLOBALS['TL_LANG']['FMD']['moviereader'] = array('Movie reader', 'shows a movie.');
 
 ?>

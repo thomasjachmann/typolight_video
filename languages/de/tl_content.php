@@ -30,7 +30,7 @@
 /**
  * Fields
  */
-$GLOBALS['TL_LANG']['tl_content']['movie_alias'] = array('Bezogener Film', 'Bitte wählen Sie den Film aus, den Sie einfügen möchten.');
+$GLOBALS['TL_LANG']['tl_content']['movie_alias'] = array('Referenzierter Film', 'Bitte wählen Sie den Film aus, den Sie einfügen möchten.');
 $GLOBALS['TL_LANG']['tl_content']['movie_showDescription'] = array('Beschreibung anzeigen', 'Bitte wählen Sie, ob die Film-Beschreibung mit angezeigt werden soll oder nicht.');
 
 ?>

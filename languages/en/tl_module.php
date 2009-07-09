@@ -21,23 +21,18 @@
  * PHP version 5
  * @copyright  Thomas Jachmann 2009 
  * @author     Thomas Jachmann <tom.j@gmx.net> 
- * @package    Language
+ * @package    Movies 
  * @license    LGPL 
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['MSC']['movieSource'] = 'Quelle';
 
 /**
- * Content Elements
+ * Fields
  */
-$GLOBALS['TL_LANG']['CTE']['movies']   = array('Film-Elemente', '');
-$GLOBALS['TL_LANG']['CTE']['movieReader']   = array('Film', 'fügt einen Film ein.');
-
-
-/**
- * Errors
- */
-$GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'] = 'Die URL "%s" stammt von keiner bekannten Video-Quelle (www.youtube.com, video.google.com, www.advotv.com).';
+$GLOBALS['TL_LANG']['tl_module']['movie_categories'] = array('Movie categories', 'Please select one or more movie categories.');
+$GLOBALS['TL_LANG']['tl_module']['movie_movies'] = array('Movies', 'Please select one or more movies. Selected movies take precedence over selected movie categories. Grouping by category will be disabled by this.');
+$GLOBALS['TL_LANG']['tl_module']['movie_maxMovies'] = array('Maximum amount', 'When you want to display only a maximum amount of movies, insert a number greater than 0.');
+$GLOBALS['TL_LANG']['tl_module']['movie_random'] = array('Sorted randomly', 'Shall the movies be displayed in random order? Grouping by category will be disabled by this.');
 
 ?>

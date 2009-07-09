@@ -19,25 +19,18 @@
  * Software Foundation website at http://www.gnu.org/licenses/.
  *
  * PHP version 5
- * @copyright  Thomas Jachmann 2009 
- * @author     Thomas Jachmann <tom.j@gmx.net> 
- * @package    Language
- * @license    LGPL 
+ * @copyright  Leo Feyer 2005
+ * @author     Leo Feyer <leo@typolight.org>
+ * @package    Comments
+ * @license    LGPL
  * @filesource
  */
 
-$GLOBALS['TL_LANG']['MSC']['movieSource'] = 'Quelle';
 
 /**
- * Content Elements
+ * Fields
  */
-$GLOBALS['TL_LANG']['CTE']['movies']   = array('Film-Elemente', '');
-$GLOBALS['TL_LANG']['CTE']['movieReader']   = array('Film', 'fügt einen Film ein.');
-
-
-/**
- * Errors
- */
-$GLOBALS['TL_LANG']['ERR']['movieUrlUnknown'] = 'Die URL "%s" stammt von keiner bekannten Video-Quelle (www.youtube.com, video.google.com, www.advotv.com).';
+$GLOBALS['TL_LANG']['tl_content']['movie_alias'] = array('Referenced movie', 'Please choose the movie you want to insert.');
+$GLOBALS['TL_LANG']['tl_content']['movie_showDescription'] = array('Display description', 'Please choose whether the movie\' description should be displayed along with the movie or not.');
 
 ?>
