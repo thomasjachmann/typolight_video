@@ -1,0 +1,67 @@
+h2. Purpose
+
+This "TYPOlight":http://www.typolight.org "extension":http://typolight.org/erweiterungsliste.html can be used to manage videos from video sharing sites within your CMS. You can organize your linked videos in categories, display video lists of various types and embed the videos within your pages.
+
+The extension is based on TYPOlight's FAQ module (taken from TYPOlight 2.7.2). It essentially is a copy-and-rename clone with some adaptions and extensions.
+
+h2. Installation
+
+Just use TYPOlight's extension manager to install the extension off of their extension site. The extension's name is "video".
+
+h2. Usage
+
+In the backend, there's a content section "Videos" where you can manage video categories and their videos. Here are the steps you got to take to get external videos onto your site.
+
+h3. Create Pages
+
+First of all, go to Site Structure and create two pages:
+
+* *list page* that will be used to display a list of all (or a selection of) videos
+* *view page* that will be used to display a single video
+
+h3. Create Categories
+
+Go to the content section "Videos" and create your categories. When creating a category, you should specify the view page as redirect page. The URL of this page will be used within video lists to link to the video in order to view it.
+
+h3. Create Videos
+
+When creating a video, you only have to enter a name (which will be displayed along with the embedded video or it's thumbnail) and the URL of the video. Just go to your favorite video sharing site, click on the video you want to use and copy the URL from the browser's address bar. The extension will take care of extracting the video ID, determining the URL of the video thumbnail and creating the appropriate code to embed the video within your pages.
+
+For further explanation, you can enter a description that will be displayed below the video by the video reader.
+
+Don't forget to select the publication checkbox at the bottom of the form to publish the newly created video.
+
+h3. Create List Module
+
+To view video lists, you need at least one video list module. Depending on the settings, it behaves differently.
+
+First of all, you have to decide whether the list should contain certain categories or certain movies. The former is suitable for lists that are updated automatically when new videos are created. The latter is perfect for lists that should contain a cross section of videos from several categories or just a little subset of the videos of a certain category.
+
+Then, you can limit the amount of videos and select whether to sort the videos randomly. This is perfect for teaser lists in side bars that display a random selection of say five videos.
+
+Normally, videos are displayed grouped by category. By either selecting videos instead of categories in the first step or selection random sort order in the second step, the videos will be displayed in a plain list - no category grouping, no category headlines.
+
+After you've created the module, you need to add it to the list page's article content.
+
+h3. Create Reader Module
+
+To view a video, you need at least one video reader module. This has nothing special to it. Other than with TYPOlight's FAQ module, you don't need to specify, which categories the video reader is responsible for. It just works for all videos.
+
+After you've created the module, you need to add it to the view page's article content.
+
+h3. Embed A Video Into A Regular Page
+
+When authoring the content of a page within it's article, you can insert a video within the other content. Just create a content element of type video. You then can select the video you want embed and choose whether the video's description should be displayed or not.
+
+h2. Supported Video Sharing Sites
+
+* http://www.youtube.com
+* http://video.google.com
+* http://www.advotv.com
+
+This currently is a rather limited selection but can easily be extended:
+
+* dca/tl_video.php, method extractVideoData() does the work of determining the video source, extracting the video ID and determining the URL of the video thumbnail
+* templates/mod_videoreader_&lt;video source&gt;.tpl is a video sharing site specific template that renders the code to embed the video
+
+When you need another video sharing site being implemented or have implemented one yourself, please drop me a note so that I can include it here.
